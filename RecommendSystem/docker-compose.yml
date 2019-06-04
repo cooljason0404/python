@@ -1,0 +1,18 @@
+version: '3'
+services:
+    train:
+        image: recommendsys:v1.0
+        volumes:
+            - "/mnt/cifs:/mnt/cifs"
+            - "/var/recommendsys/train:/var/workspace/spark/log/"
+        restart: always
+        command: train
+        container_name: "train"
+    prediction:
+        image: recommendsys:v1.0
+        volumes:
+            - "/mnt/cifs:/mnt/cifs"
+            - "/var/recommendsys/prediction:/var/workspace/spark/log/"
+        restart: always
+        command: prediction
+        container_name: "prediction"
